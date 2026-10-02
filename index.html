@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Junior</title>
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            padding: 18px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-bottom: 1px solid #333;
+        }
+
+        #chat {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 12px 15px;
+            border-radius: 15px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+
+        .user {
+            background: #333;
+            margin-left: auto;
+        }
+
+        .bot {
+            background: #222;
+            margin-right: auto;
+        }
+
+        #inputArea {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #333;
+            gap: 8px;
+        }
+
+        input {
+            flex: 1;
+            padding: 13px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        button {
+            border: none;
+            border-radius: 20px;
+            padding: 0 18px;
+            background: white;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>🧠 Luna Junior</header>
+
+<div id="chat">
+    <div class="message bot">
+        Bhai 😎 Luna Junior online hai. Bol kya scene hai?
+    </div>
+</div>
+
+<div id="inputArea">
+    <input id="message" placeholder="Type something...">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+function sendMessage() {
+    const input = document.getElementById("message");
+    const chat = document.getElementById("chat");
+
+    const text = input.value.trim();
+
+    if (text === "") return;
+
+    chat.innerHTML += `
+        <div class="message user">${text}</div>
+    `;
+
+    input.value = "";
+
+    setTimeout(() => {
+        chat.innerHTML += `
+            <div class="message bot">
+                Abhi mera AI brain connect nahi hua 😂<br>
+                Lekin interface ready hai!
+            </div>
+        `;
+
+        chat.scrollTop = chat.scrollHeight;
+    }, 500);
+}
+</script>
+
+</body>
+</html>
